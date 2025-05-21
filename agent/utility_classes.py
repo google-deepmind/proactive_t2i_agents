@@ -2,10 +2,11 @@
 
 from typing import TypeVar
 
-import vertexai
+from google.cloud.aiplatform import vertexai
 import tenacity
 from vertexai.generative_models import GenerationConfig
 from vertexai.generative_models import GenerativeModel
+from vertexai.vision_models import ImageGenerationModel
 
 
 T = TypeVar('T')
@@ -14,6 +15,13 @@ T = TypeVar('T')
 # https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference
 DEFAULT_T2I_VERTEX_ID = 'imagen-3.0-generate-001'
 DEFAULT_LLM_VERTEX_ID = 'gemini-1.5-pro-002'
+
+# test
+vertexai.init(project=515501733151, location='us-central1')
+
+# Uncomment the following line for release
+# vertexai.init(project=<YOUR_PROJECT_ID>, location='us-central1')
+
 
 class LLM:
   """LLM for text manipulation."""
